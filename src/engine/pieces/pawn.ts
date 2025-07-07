@@ -12,16 +12,17 @@ export default class Pawn extends Piece {
         let newPosition= board.findPiece(this);
         if(this.player === Player.WHITE){
             newPosition.row = currentPosition.row + 1;
-            if(board.getPiece(newPosition) == null) {
+            if(board.getPiece(newPosition) === undefined) {
                 return newPosition;
             }
         }
         else{
             newPosition.row = currentPosition.row - 1;
-            if(board.getPiece(newPosition) == null) {
+            if(board.getPiece(newPosition) === undefined) {
                 return newPosition;
             }
         }
+        this.moveTo(board, newPosition);
         return currentPosition;
     }
 }
