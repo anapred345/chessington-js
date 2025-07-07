@@ -10,18 +10,6 @@ export default class Rook extends Piece {
     }
 
     public getAvailableMoves(board: Board) {
-        let newPosition: Square[] = [];
-        const currentPosition= board.findPiece(this);
-        for (let i = 0; i < GameSettings.BOARD_SIZE; i++) {
-            if (i !== currentPosition.col) {
-                newPosition.push(new Square(currentPosition.row, i));
-            }
-        }
-        for (let i = 0; i < GameSettings.BOARD_SIZE; i++) {
-            if (i !== currentPosition.row) {
-                newPosition.push(new Square(i, currentPosition.col));
-            }
-        }
-        return newPosition;
+        return this.linearMove(board, board.findPiece(this));
     }
 }
