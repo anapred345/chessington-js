@@ -22,7 +22,6 @@ export default class Pawn extends Piece {
                 return newPosition;
             }
         }
-        this.moveTo(board, newPosition);
         return currentPosition;
     }
 }
