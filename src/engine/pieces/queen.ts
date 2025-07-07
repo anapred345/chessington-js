@@ -11,16 +11,6 @@ export default class Queen extends Piece {
     }
 
     public getAvailableMoves(board: Board) {
-        const currentPosition= board.findPiece(this);
-
-        const rook = new Rook(this.player);
-        board.setPiece(currentPosition, rook);
-        const rook_moves = rook.getAvailableMoves(board);
-
-        const bishop = new Bishop(this.player);
-        board.setPiece(currentPosition, bishop);
-        const bishop_moves = bishop.getAvailableMoves(board);
-
-        return [... rook_moves, ... bishop_moves];
+        return [ ...this.linearMove(board, board.findPiece(this)), ...this.diagonalMove(board, board.findPiece(this))];
     }
 }
