@@ -8,6 +8,20 @@ export default class Pawn extends Piece {
     }
 
     public getAvailableMoves(board: Board) {
-        return new Array(0);
+        const currentPosition= board.findPiece(this);
+        let newPosition= board.findPiece(this);
+        if(this.player === Player.WHITE){
+            newPosition.row = currentPosition.row + 1;
+            if(board.getPiece(newPosition) === undefined) {
+                return newPosition;
+            }
+        }
+        else{
+            newPosition.row = currentPosition.row - 1;
+            if(board.getPiece(newPosition) === undefined) {
+                return newPosition;
+            }
+        }
+        return currentPosition;
     }
 }
